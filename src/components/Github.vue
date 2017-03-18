@@ -57,14 +57,14 @@ export default {
       xhr.onload = function () {
         JSON.parse(xhr.responseText).forEach(function (eventItem) {
           if (eventItem.type === 'PushEvent') {
-            var commit = {}
-            commit.repo = eventItem.repo
             eventItem.payload.commits.forEach(function (commitItem) {
+              var commit = {}
+              commit.repo = eventItem.repo
               commit.sha = commitItem.sha
               commit.url = commitItem.url
               commit.msg = commitItem.message
+              self.commits.push(commit)
             })
-            self.commits.push(commit)
           }
         })
       }
