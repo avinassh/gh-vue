@@ -20,15 +20,15 @@
           </tr>
           </tbody>
         </table>
-          <div class="has-text-centered is-full-width" v-if="!commits.length && fetching">
-            <i class="fa fa-3x fa fa-circle-o-notch fa-spin"></i>
+        <div class="has-text-centered is-full-width" v-if="!commits.length && fetching">
+          <i class="fa fa-3x fa fa-circle-o-notch fa-spin"></i>
+        </div>
+        <div class="has-text-centered is-full-width" v-if="!commits.length && !fetching">
+          <div>
+            <i class="fa fa-3x fa-frown-o" aria-hidden="true"></i>
           </div>
-          <div class="has-text-centered is-full-width" v-if="!commits.length && !fetching">
-            <div>
-              <i class="fa fa-3x fa-frown-o" aria-hidden="true"></i>
-            </div>
-            <div>Nothing to show here.</div>
-          </div>
+          <div>Nothing to show here.</div>
+        </div>
       </div>
     </section>
   </div>
@@ -77,7 +77,7 @@
     }
   }
 
-  function fixURL (url) {
+  function fixURL(url) {
     // Github API returns API urls to repos and commits rather than web URLs.
     // this functions fixes those
     //
@@ -96,12 +96,15 @@
   .table-container {
     margin-top: 20px;
   }
+
   a {
     color: #097af1;
   }
+
   .username-label {
     margin-bottom: 5px;
   }
+
   .fa-3x {
     font-size: 3em !important;
   }
