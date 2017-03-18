@@ -23,8 +23,8 @@
         </thead>
         <tbody>
         <tr v-for="commit in commits">
-          <td><a>{{ commit.repo.name }}</a></td>
-          <td><a>{{ commit.sha }}</a></td>
+          <td><a :href="commit.repo.url">{{ commit.repo.name }}</a></td>
+          <td><a :title="commit.sha" :href="commit.url">{{ commit.msg }}</a></td>
         </tr>
         </tbody>
       </table>
