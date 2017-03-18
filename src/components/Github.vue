@@ -1,12 +1,35 @@
 <template>
-  <div class="hello">
-    <h1>{{ title }}</h1>
-    <h2>{{ tagline }}</h2>
-    <ul>
-      <li v-for="commit in commits">
-        {{ commit.msg }}
-      </li>
-    </ul>
+  <div>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          {{ title }}
+        </h1>
+        <h2 class="subtitle">
+          {{ tagline }}
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Repo</th>
+          <th>Commit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="commit in commits">
+          <td><a>{{ commit.repo.name }}</a></td>
+          <td><a>{{ commit.sha }}</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
   </div>
 </template>
 
@@ -53,21 +76,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
