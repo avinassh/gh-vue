@@ -63,8 +63,9 @@
               eventItem.payload.commits.forEach(function (commitItem) {
                 var commit = {}
                 commit.repo = eventItem.repo
+                commit.repo.url = fixURL(commit.repo.url)
                 commit.sha = commitItem.sha
-                commit.url = commitItem.url.replace('api', 'www').replace('/repos', '').replace('commits', 'commit')
+                commit.url = fixURL(commitItem.url)
                 commit.msg = commitItem.message
                 self.commits.push(commit)
               })
@@ -75,6 +76,20 @@
       }
     }
   }
+
+  function fixURL (url) {
+    // Github API returns API urls to repos and commits rather than web URLs.
+    // this functions fixes those
+    //
+    // `https://api.github.com/repos/avinassh/gh-vue` should be `https://github.com/avinassh/gh-vue`
+    //
+    // `https://api.github.com/repos/avinassh/gh-vue/commits/ccf` should be
+    // `https://github.com/avinassh/gh-vue/commits/ccf`
+    return url.replace('https://api.github.com', 'https://github.com')
+      .replace('/repos/', '/')
+      .replace('/commits/', '/commit/')
+  }
+
 </script>
 
 <style>
