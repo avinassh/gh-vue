@@ -92,7 +92,7 @@
 
 </script>
 
-<style>
+<style scoped>
   .table-container {
     margin-top: 20px;
   }
