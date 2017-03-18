@@ -12,7 +12,25 @@ export default {
   data () {
     return {
       title: 'Github Vue',
-      tagline: 'Simple Vue JS app to display your Github Commits'
+      tagline: 'Simple Vue JS app to display your Github Commits',
+      commits: null
+    }
+  },
+
+  created: function () {
+    this.update()
+  },
+
+  methods: {
+    update: function () {
+      var xhr = new XMLHttpRequest()
+      var self = this
+      xhr.open('GET', 'https://api.github.com/users/avinassh/events/public')
+      xhr.onload = function () {
+        self.commits = JSON.parse(xhr.responseText)
+        console.log(self.commits)
+      }
+      xhr.send()
     }
   }
 }
