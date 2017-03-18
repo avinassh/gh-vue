@@ -1,17 +1,5 @@
 <template>
   <div>
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            {{ title }}
-          </h1>
-          <h2 class="subtitle">
-            {{ tagline }}
-          </h2>
-        </div>
-      </div>
-    </section>
     <section class="container">
       Enter the username <input v-model="username" @keyup.enter="update" class="input" type="text"/>
     </section>
@@ -41,8 +29,6 @@
     name: 'github',
     data () {
       return {
-        title: 'Github Vue',
-        tagline: 'Simple Vue JS app to display your latest Github Commits',
         username: 'avinassh',
         commits: null
       }

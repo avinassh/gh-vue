@@ -2,16 +2,19 @@
   <div id="app">
     <img src="./assets/logo.png">
     <hello></hello>
+    <github></github>
   </div>
 </template>
 
 <script>
-import Hello from './components/Github'
+import Hello from './components/Hello'
+import Github from './components/Github'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Hello,
+    Github
   }
 }
 </script>
