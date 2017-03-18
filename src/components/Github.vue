@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       title: 'Github Vue',
-      tagline: 'Simple Vue JS app to display your Github Commits',
+      tagline: 'Simple Vue JS app to display your latest Github Commits',
       commits: null
     }
   },
