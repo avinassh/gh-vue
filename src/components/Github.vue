@@ -2,10 +2,9 @@
   <div class="hello">
     <h1>{{ title }}</h1>
     <h2>{{ tagline }}</h2>
-    {{ commits }}
     <ul>
       <li v-for="commit in commits">
-        {{ commit.sha }}
+        {{ commit.msg }}
       </li>
     </ul>
   </div>
@@ -30,7 +29,7 @@ export default {
     update: function () {
       var xhr = new XMLHttpRequest()
       var self = this
-      self.commits = new Set()
+      self.commits = []
       xhr.open('GET', 'https://api.github.com/users/avinassh/events/public')
       xhr.onload = function () {
         JSON.parse(xhr.responseText).forEach(function (eventItem) {
@@ -42,7 +41,7 @@ export default {
               commit.url = commitItem.url
               commit.msg = commitItem.message
             })
-            self.commits.add(commit)
+            self.commits.push(commit)
           }
         })
       }
