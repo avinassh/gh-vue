@@ -9,6 +9,7 @@
         <h2 class="subtitle">
           {{ tagline }}
         </h2>
+        Enter the username <input v-model="username" @keyup.enter="update" class="input" type="text"/>
       </div>
     </div>
   </section>
@@ -40,6 +41,7 @@ export default {
     return {
       title: 'Github Vue',
       tagline: 'Simple Vue JS app to display your latest Github Commits',
+      username: 'avinassh',
       commits: null
     }
   },
@@ -53,7 +55,7 @@ export default {
       var xhr = new XMLHttpRequest()
       var self = this
       self.commits = []
-      xhr.open('GET', 'https://api.github.com/users/avinassh/events/public')
+      xhr.open('GET', 'https://api.github.com/users/' + self.username + '/events/public')
       xhr.onload = function () {
         JSON.parse(xhr.responseText).forEach(function (eventItem) {
           if (eventItem.type === 'PushEvent') {
